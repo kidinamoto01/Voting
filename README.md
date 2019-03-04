@@ -27,3 +27,35 @@ A mapping of name to ballot contents. Create a `ballotStore` in the multistore t
 A mapping of name to owner. Create a `ownerStore` in the multistore to hold this data.
 A mapping of address to ballot. Create a `historyStore` in the multistore to hold this data.
 
+
+## Application Architecture
+```
+./votingsystem
+├── Gopkg.toml
+├── Makefile
+├── app.go
+├── cmd
+│   ├── votecli
+│   │   └── main.go
+│   └── voted
+│       └── main.go
+└── x
+    └── voting
+        ├── client
+        │   ├── cli
+        │   │   ├── query.go
+        │   │   └── tx.go
+        │   ├── rest
+        │   │   └── rest.go
+        │   └── module_client.go
+        ├── codec.go
+        ├── handler.go
+        ├── keeper.go
+        ├── msgs.go
+        └── querier.go
+```
+
+
+## Messages
+
+Messages are contained in transactions. They trigger state transitions. Each module defines a list of messages and how to handle them. Here are the messages you need to implement the desired functionality for your nameservice application:
